@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input[type="number"] {
+            width: 60px;
+            margin: 5px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h2>Calculadora de Média Escolar</h2>
+
+    <label>Nota 1:</label>
+    <input type="number" id="nota1" step="any"><br><br>
+
+    <label>Nota 2:</label>
+    <input type="number" id="nota2" step="any"><br><br>
+
+    <label>Nota 3:</label>
+    <input type="number" id="nota3" step="any"><br><br>
+
+    <label>Nota 4:</label>
+    <input type="number" id="nota4" step="any"><br><br>
+
+    <button onclick="calcularMedia()">Calcular Média</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcularMedia() {
+            let n1 = parseFloat(document.getElementById("nota1").value);
+            let n2 = parseFloat(document.getElementById("nota2").value);
+            let n3 = parseFloat(document.getElementById("nota3").value);
+            let n4 = parseFloat(document.getElementById("nota4").value);
+
+            if (isNaN(n1) || isNaN(n2) || isNaN(n3) || isNaN(n4)) {
+                alert("Por favor, preencha todas as notas.");
+                return;
+            }
+
+            let media = (n1 + n2 + n3 + n4) / 4;
+
+            let situacao = "";
+            let cor = "";
+
+            if (media >= 7) {
+                situacao = "Aprovado";
+                cor = "green";
+            } else if (media >= 5) {
+                situacao = "Recuperação";
+                cor = "orange";
+            } else {
+                situacao = "Reprovado";
+                cor = "red";
+            }
+
+            let resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = `Média: ${media.toFixed(2)} - Situação: ${situacao}`;
+            resultadoDiv.style.color = cor;
+        }
+    </script>
+</body>
+</html>
