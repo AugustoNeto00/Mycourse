@@ -1,24 +1,26 @@
-class doubleNode:
+class DoubleNode:
     def __init__ (self, val):
         self.val = val
         self.next = None
         self.previus = None
 
-class doubleLinkedList:
+class DoubleLinkedList:
     def __init__(self):
         self.start = None
         self.end = None
     
     def insertatStart(self, val):
-        new_node = doubleNode(val)
-        if self.start is None:
-            self.start = self.end = val
+        new_node = DoubleNode() #create a new object of the node
+        if self.start is None: 
+            self.start = self.end = new_node
         else:
-            #ainda fazendo
+            self.next = self.end #The value of the next goes to the start of the D.L.L
+            self.start.previus = new_node
+            self.start = new_node
+        
 
-class Nodelist:
 
-
-No1 = doubleNode("João")        
-No2 = doubleNode("Marina")        
-No3 = doubleNode("Pedro")        
+list = DoubleLinkedList()
+No1 = DoubleNode("João")        
+No2 = DoubleNode("Marina")        
+No3 = DoubleNode("Pedro")        
